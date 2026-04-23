@@ -121,8 +121,8 @@ function RiskBar({ delay = 0, triggered }: { delay?: number; triggered: boolean 
 function AnalysisTimer({ startDelay = 0, triggered }: { startDelay?: number; triggered: boolean }) {
   const [counting, setCounting] = useState(false);
   const [current, setCurrent] = useState(0);
-  const frameRef = useRef<number>();
-  const startRef = useRef<number>();
+  const frameRef = useRef<number | undefined>(undefined);
+  const startRef = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     if (!triggered) return;
