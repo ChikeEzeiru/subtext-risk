@@ -1,26 +1,158 @@
 @import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@source "../components/**/*.{tsx,ts,jsx,js}";
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* ————————————————————————————
+     FONTS
+  ———————————————————————————— */
+  --font-sans: var(--font-neue-montreal);
+  --font-mono: var(--font-input-mono);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* ————————————————————————————
+     COLOURS — Backgrounds
+  ———————————————————————————— */
+  --color-bg-primary: #fafafa;
+  --color-bg-alt: #f4f4f5;
+  --color-bg-dark: #17171c;
+
+  /* ————————————————————————————
+     COLOURS — Text
+  ———————————————————————————— */
+  --color-title: #17171c;
+  --color-body: #4f4f5e;
+  --color-body-dark: #9e9ead;
+
+  /* ————————————————————————————
+     COLOURS — Brand / Accent
+  ———————————————————————————— */
+  --color-accent: #ca7d15;
+  --color-accent-mid: #e5a422;
+  --color-accent-dark: #ecbf33;
+  --color-accent-light: #fefbec;
+  --color-accent-icon: #e5a422;
+
+  /* ————————————————————————————
+     COLOURS — Icons
+  ———————————————————————————— */
+  --color-icon-inactive: #94a3b8;
+  --color-icon-active: #1e293b;
+
+  /* ————————————————————————————
+     COLOURS — Border
+  ———————————————————————————— */
+  --color-border: rgba(0, 0, 0, 0.1);
+
+  /* ————————————————————————————
+     COLOURS — Success
+  ———————————————————————————— */
+  --color-success: #16a34a;
+  --color-success-border: #4ade80;
+  --color-success-bg: #dcfce7;
+  --color-success-text: #15803d;
+
+  /* ————————————————————————————
+     COLOURS — Base
+  ———————————————————————————— */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* ————————————————————————————
+     SPACING — Custom (30px only, rest use Tailwind defaults)
+  ———————————————————————————— */
+  --spacing-7-5: 1.875rem; /* 30px */
+
+  /* ————————————————————————————
+     BORDER RADIUS
+  ———————————————————————————— */
+  --radius-sm: 0.375rem; /* 6px  — buttons, tags, small elements */
+  --radius-md: 0.75rem; /* 12px — cards, modals, dropdowns */
+
+  /* ————————————————————————————
+     TYPOGRAPHY — Headings (all Medium/500)
+  ———————————————————————————— */
+  --text-heading-xl: 3.75rem;
+  --text-heading-xl--line-height: 4.5rem;
+
+  --text-heading-lg: 3rem;
+  --text-heading-lg--line-height: 3.75rem;
+
+  --text-heading-md: 2.25rem;
+  --text-heading-md--line-height: 2.75rem;
+
+  --text-heading-sm: 1.875rem;
+  --text-heading-sm--line-height: 2.375rem;
+
+  --text-heading-xs: 1.5rem;
+  --text-heading-xs--line-height: 2rem;
+
+  /* ————————————————————————————
+     TYPOGRAPHY — Body (all Regular/400)
+  ———————————————————————————— */
+  --text-body-3xl: 1.875rem;
+  --text-body-3xl--line-height: 2.375rem;
+
+  --text-body-2xl: 1.5rem;
+  --text-body-2xl--line-height: 2rem;
+
+  --text-body-xl: 1.3125rem;
+  --text-body-xl--line-height: 1.875rem;
+
+  --text-body-lg: 1.1875rem;
+  --text-body-lg--line-height: 1.75rem;
+
+  --text-body-md: 1.0625rem;
+  --text-body-md--line-height: 1.5rem;
+
+  --text-body-sm: 0.9375rem;
+  --text-body-sm--line-height: 1.25rem;
+
+  --text-body-xs: 0.8125rem;
+  --text-body-xs--line-height: 1.125rem;
+
+  --text-body-2xs: 0.6875rem;
+  --text-body-2xs--line-height: 1rem;
+
+  --text-body-3xs: 0.625rem;
+  --text-body-3xs--line-height: 1rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fafafa;
+  color: #4f4f5e;
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scanDown {
+  0% { top: 0; opacity: 0.4; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.05); }
+  50% { box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.05), 0 0 20px 4px rgba(202,125,21,0.08); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes checkPop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
 }
