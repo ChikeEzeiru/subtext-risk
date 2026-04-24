@@ -9,10 +9,10 @@ export default function Footer({ showCTA = true }: FooterProps) {
     <footer className="bg-[#17171C] flex flex-col gap-24 items-center py-24 w-full">
       {/* CTA Section — hidden on interior pages */}
       {showCTA && (
-        <div className="flex flex-col items-center max-w-310 px-8 w-full">
+        <div className="flex flex-col items-center max-w-310 px-4 md:px-8 w-full">
           <div className="flex flex-col gap-10 items-center">
-            <div className="flex flex-col gap-5 items-center text-center whitespace-nowrap">
-              <h2 className="font-neue-montreal font-medium text-[48px] leading-15 tracking-[-0.96px] text-[#F4F4F5]">
+            <div className="flex flex-col gap-5 items-center text-center">
+              <h2 className="font-neue-montreal font-medium text-[32px] leading-10 md:text-[48px] md:leading-15 tracking-[-0.96px] text-[#F4F4F5]">
                 See what Subtext finds
                 <br />
                 on your merchants.
@@ -63,7 +63,7 @@ export default function Footer({ showCTA = true }: FooterProps) {
       )}
 
       {/* Inner Footer Row */}
-      <div className="flex items-center justify-between max-w-310 px-8 w-full">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-0 max-w-310 px-4 md:px-8 w-full">
         {/* Left — Logo + Copyright */}
         <div className="flex flex-col gap-5 items-start">
           <div className="flex gap-2.5 items-center">

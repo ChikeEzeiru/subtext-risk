@@ -147,7 +147,7 @@ export default function ApiSection() {
 
   return (
     <section className="flex items-center justify-center py-24 w-full">
-      <div className="flex gap-16 items-center max-w-310 w-full px-8">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center max-w-310 w-full px-4 md:px-8">
         {/* Left: Grey container with code block */}
         <div className="flex-1 bg-[#F4F4F5] rounded-xl px-14 py-12 flex items-center justify-center">
           <div className="bg-[#17171C] border border-[#3D3D48] rounded-xl shadow-lg overflow-hidden flex flex-col h-100 w-full">

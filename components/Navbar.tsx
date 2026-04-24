@@ -3,99 +3,75 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import NavMenu from "./navmenu";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close mobile menu on resize to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) setMobileOpen(false);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="fixed top-2 left-0 right-0 z-50 flex justify-center px-8">
+    <div className="fixed top-2 left-0 right-0 z-50 flex flex-col items-center px-4 md:px-8 gap-2">
       <motion.nav
         animate={{
-          backgroundColor: scrolled ? "#FFFFFF" : "rgba(255,255,255,0)",
-          borderWidth: scrolled ? "1px" : "0px",
+          backgroundColor: scrolled || mobileOpen ? "#FFFFFF" : "rgba(255,255,255,0)",
+          borderWidth: scrolled || mobileOpen ? "1px" : "0px",
           borderColor: "rgba(0,0,0,0.08)",
-          borderRadius: scrolled ? "16px" : "16px",
-          boxShadow: scrolled
-            ? "0 2px 12px rgba(0,0,0,0.06)"
-            : "0 0px 0px rgba(0,0,0,0)",
+          borderRadius: scrolled || mobileOpen ? "16px" : "16px",
+          boxShadow: scrolled || mobileOpen ? "0 2px 12px rgba(0,0,0,0.06)" : "0 0px 0px rgba(0,0,0,0)",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         style={{ borderStyle: "solid" }}
-        className="flex items-center gap-16 pl-5 pr-2 py-1.5 min-h-14"
+        className="flex items-center justify-between w-full lg:w-auto lg:justify-start lg:gap-16 pl-5 pr-2 py-1.5 min-h-14"
       >
         {/* Left group: Logo + Nav Links */}
         <div className="flex items-center gap-5">
           <Link href="/" className="flex items-center shrink-0">
-            <Image
-              src="/images/logo.svg"
-              alt="Subtext"
-              width={36}
-              height={36}
-            />
+            <Image src="/images/logo.svg" alt="Subtext" width={36} height={36} />
           </Link>
 
-          <div className="flex items-center gap-0.5">
+          {/* Desktop nav links */}
+          <div className="hidden lg:flex items-center gap-0.5">
             <div className="relative">
               <button
                 onClick={() => setProductsOpen(!productsOpen)}
                 className="flex items-center gap-2 text-body-sm text-body hover:text-title transition-colors pl-3 pr-2 py-2 rounded-sm"
               >
                 Products
-                <ChevronDown
-                  size={14}
-                  className={`transition-transform duration-200 ${
-                    productsOpen ? "rotate-180" : ""
-                  }`}
-                />
+                <ChevronDown size={14} className={`transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`} />
               </button>
-
               {productsOpen && (
                 <div className="absolute top-full left-0 mt-4 w-170 bg-white rounded-md shadow-lg border border-border p-0">
                   <NavMenu />
                 </div>
               )}
             </div>
-
-            <Link
-              href="#"
-              className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm"
-            >
-              Customers
-            </Link>
-            <Link
-              href="#"
-              className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm"
-            >
-              API Docs
-            </Link>
-            <Link
-              href="#"
-              className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm"
-            >
-              Resources
-            </Link>
+            <Link href="#" className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm">Customers</Link>
+            <Link href="#" className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm">API Docs</Link>
+            <Link href="#" className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm">Resources</Link>
           </div>
         </div>
 
-        {/* Right group: CTAs */}
+        {/* Right group: CTAs (desktop) + hamburger (mobile) */}
         <div className="flex items-center gap-1">
-          <Link
-            href="#"
-            className="text-body-sm font-medium text-body hover:text-title transition-colors px-3 py-2 rounded-lg"
-          >
+          <Link href="#" className="hidden lg:flex text-body-sm font-medium text-body hover:text-title transition-colors px-3 py-2 rounded-lg">
             Log In
           </Link>
           <Link
@@ -105,8 +81,42 @@ export default function Navbar() {
             Book a Demo
             <span className="absolute inset-0 pointer-events-none rounded-[inherit] shadow-[inset_0px_0px_0px_1px_rgba(0,0,0,0.18),inset_0px_-2px_0px_0px_rgba(0,0,0,0.05)]" />
           </Link>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="lg:hidden flex items-center justify-center w-10 h-10 text-[#4f4f5e] hover:text-[#17171c] transition-colors"
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </motion.nav>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="lg:hidden w-full bg-white rounded-2xl border border-[rgba(0,0,0,0.08)] shadow-lg overflow-hidden">
+          <nav className="flex flex-col p-4 gap-1">
+            <button
+              onClick={() => setProductsOpen(!productsOpen)}
+              className="flex items-center justify-between text-body-sm text-body hover:text-title transition-colors px-3 py-2.5 rounded-lg hover:bg-[#f4f4f5]"
+            >
+              Products
+              <ChevronDown size={14} className={`transition-transform duration-200 ${productsOpen ? "rotate-180" : ""}`} />
+            </button>
+            {productsOpen && (
+              <div className="ml-3 flex flex-col gap-1 border-l border-[rgba(0,0,0,0.08)] pl-3">
+                <Link href="#" className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-lg hover:bg-[#f4f4f5]">Merchant Screening</Link>
+                <Link href="#" className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-lg hover:bg-[#f4f4f5]">Portfolio Monitoring</Link>
+              </div>
+            )}
+            <Link href="#" className="text-body-sm text-body hover:text-title transition-colors px-3 py-2.5 rounded-lg hover:bg-[#f4f4f5]">Customers</Link>
+            <Link href="#" className="text-body-sm text-body hover:text-title transition-colors px-3 py-2.5 rounded-lg hover:bg-[#f4f4f5]">API Docs</Link>
+            <Link href="#" className="text-body-sm text-body hover:text-title transition-colors px-3 py-2.5 rounded-lg hover:bg-[#f4f4f5]">Resources</Link>
+            <div className="border-t border-[rgba(0,0,0,0.08)] mt-2 pt-2">
+              <Link href="#" className="text-body-sm font-medium text-body hover:text-title transition-colors px-3 py-2.5 rounded-lg hover:bg-[#f4f4f5] block">Log In</Link>
+            </div>
+          </nav>
+        </div>
+      )}
     </div>
   );
 }

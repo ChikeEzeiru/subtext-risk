@@ -94,23 +94,23 @@ export default function CaseStudies() {
   return (
     <section className="flex flex-col gap-16 items-center py-24 w-full">
       {/* Title Group */}
-      <div className="flex gap-16 items-start max-w-310 overflow-hidden px-8 w-full">
-        <div className="flex items-center justify-center shrink-0">
-          <h2 className="font-neue-montreal font-medium text-[48px] leading-15 tracking-[-0.96px] text-[#17171C] w-180">
+      <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start max-w-310 overflow-hidden px-4 md:px-8 w-full">
+        <div className="flex items-center justify-center md:shrink-0">
+          <h2 className="font-neue-montreal font-medium text-[32px] leading-10 md:text-[48px] md:leading-15 tracking-[-0.96px] text-[#17171C] w-full md:w-180">
             {current.heading}
           </h2>
         </div>
-        <p className="flex-1 font-neue-montreal text-[20px] leading-7-5 text-[#17171C] max-w-180">
+        <p className="flex-1 font-neue-montreal text-[18px] leading-7 md:text-[20px] md:leading-7-5 text-[#17171C] max-w-180">
           {current.bodyText}
         </p>
       </div>
 
       {/* Quote & CTA Section */}
-      <div className="flex flex-col gap-8 items-start max-w-310 overflow-hidden px-8 w-full">
+      <div className="flex flex-col gap-8 items-start max-w-310 overflow-hidden px-4 md:px-8 w-full">
         {/* Quote */}
         <div className="flex flex-col gap-10.5 items-center w-full px-6 py-16">
           <div className="flex flex-col gap-5 items-center justify-center max-w-180 text-center">
-            <p className="font-neue-montreal font-medium text-[30px] leading-9.5 text-[#4F4F5E]">
+            <p className="font-neue-montreal font-medium text-[20px] leading-8 md:text-[30px] md:leading-9.5 text-[#4F4F5E]">
               {current.quote}
             </p>
             <p className="font-neue-montreal text-[20px] leading-7-5 text-[#4F4F5E]">
@@ -140,15 +140,17 @@ export default function CaseStudies() {
         </div>
 
         {/* Logo Bar - Clickable Buttons */}
-        <div className="flex items-start w-full border border-black/10 rounded-xl overflow-hidden">
+        <div className="grid grid-cols-2 md:flex items-start w-full border border-black/10 rounded-xl overflow-hidden">
           {caseStudies.map((study, index) => (
             <button
               key={study.id}
               onClick={() => handleLogoClick(index)}
               className={`flex-1 flex flex-col items-center justify-center min-h-18 px-6 py-6 transition-all ${
-                index === caseStudies.length - 1
-                  ? ""
-                  : "border-r border-black/10"
+                index % 2 === 0 ? "border-r border-black/10" : ""
+              } ${
+                index < 2 ? "border-b md:border-b-0 border-black/10" : ""
+              } md:border-r-0 ${
+                index !== caseStudies.length - 1 ? "md:border-r border-black/10" : ""
               } hover:bg-gray-50`}
               aria-pressed={activeIndex === index}
               style={{ cursor: "pointer" }}

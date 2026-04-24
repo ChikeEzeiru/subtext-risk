@@ -218,7 +218,7 @@ function SolutionCard({
 }) {
   return (
     <div
-      className={`flex flex-col gap-4 items-start overflow-clip p-6 w-98 h50 ${className}`}
+      className={`flex flex-col gap-4 items-start overflow-clip p-6 w-full ${className}`}
     >
       <div className="bg-[#FAFAFA] border border-[#D3D3D9] rounded-3xl size-12 flex items-center justify-center">
         <Icon className="size-6" />
@@ -239,8 +239,8 @@ export default function Solutions() {
   return (
     <section className="bg-[#F4F4F5] flex flex-col gap-16 items-center py-24 w-full">
       {/* Heading */}
-      <div className="flex flex-col items-center max-w-310 overflow-clip px-8 w-full">
-        <h2 className="font-neue-montreal font-medium text-[48px] leading-15 tracking-[-0.96px] text-[#17171C] text-center">
+      <div className="flex flex-col items-center max-w-310 overflow-clip px-4 md:px-8 w-full">
+        <h2 className="font-neue-montreal font-medium text-[32px] leading-10 md:text-[48px] md:leading-15 tracking-[-0.96px] text-[#17171C] text-center">
           Merchant risk doesn&apos;t end
           <br />
           at onboarding. <span className="text-[#CA7D15]">Neither do we.</span>
@@ -248,7 +248,7 @@ export default function Solutions() {
       </div>
 
       {/* Bento Grid */}
-      <div className="flex flex-col items-start max-w-310 overflow-clip px-8 w-full">
+      <div className="flex flex-col items-start max-w-310 overflow-clip px-4 md:px-8 w-full">
         {/* Primary Card - Merchant Screening */}
         <div className="border-t border-x border-black/10 rounded-t-xl flex gap-2 items-end justify-center min-h-120 overflow-clip p-0 relative w-full">
           {/* Animation container */}
@@ -279,7 +279,7 @@ export default function Solutions() {
         </div>
 
         {/* Three bottom cards */}
-        <div className="flex items-start w-full">
+        <div className="flex flex-col md:flex-row items-start w-full">
           <SolutionCard
             icon={() => (
               <Image
@@ -292,7 +292,7 @@ export default function Solutions() {
             )}
             heading="Good merchants today can become risky merchants tomorrow."
             body="After onboarding, Subtext watches your entire portfolio daily and alerts you when a merchant's website, reviews, or business model changes."
-            className="border border-black/10 rounded-bl-xl"
+            className="border border-black/10 rounded-bl-xl md:rounded-bl-xl md:rounded-tl-none rounded-t-xl md:rounded-t-none md:border-r-0"
           />
           <SolutionCard
             icon={() => (
@@ -306,7 +306,7 @@ export default function Solutions() {
             )}
             heading="When a case needs much more than a quick check."
             body="Extended and thorough AI-powered investigation across a merchant's full online presence — the kind of report that used to take an analyst half a day."
-            className="border-y border-black/10"
+            className="border-x border-b border-black/10 md:border-y md:border-x-0"
           />
           <SolutionCard
             icon={() => (
@@ -320,7 +320,7 @@ export default function Solutions() {
             )}
             heading="Turn risk findings into audit-ready documentation."
             body="Every finding from screening, monitoring, and investigation — packaged into formatted, timestamped reports ready for regulators and card networks."
-            className="border border-black/10 rounded-br-xl"
+            className="border border-black/10 rounded-br-xl md:rounded-br-xl md:rounded-tr-none rounded-b-xl md:rounded-b-none md:border-l-0"
           />
         </div>
       </div>

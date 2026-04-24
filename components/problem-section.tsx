@@ -24,8 +24,8 @@ export default function ProblemSection() {
 
   return (
     <section className="bg-[#17171c] w-full py-24 flex justify-center">
-      <div ref={ref} className="flex flex-col gap-8 max-w-310 w-full px-8">
-        <p className="text-[30px] leading-9.5 text-body-dark">
+      <div ref={ref} className="flex flex-col gap-8 max-w-310 w-full px-4 md:px-8">
+        <p className="text-[20px] leading-8 md:text-[30px] md:leading-9.5 text-body-dark">
           <span
             style={{
               fontWeight: triggered ? 500 : 400,
@@ -40,7 +40,7 @@ export default function ProblemSection() {
         </p>
 
         <p
-          className="text-[24px] leading-8 font-medium text-[#e5a422]"
+          className="text-[18px] leading-7 md:text-[24px] md:leading-8 font-medium text-[#e5a422]"
           style={{
             opacity: triggered ? 1 : 0,
             transform: triggered ? "translateY(0)" : "translateY(10px)",
