@@ -298,6 +298,7 @@ const menuCards: MenuCard[] = [
     title: "Deep Investigation",
     description: "When a case needs more than a quick check.",
     href: "/deep-investigation",
+    isNew: true,
     illustration: <DeepInvestigationIllustration />,
     tall: false,
   },
@@ -305,6 +306,7 @@ const menuCards: MenuCard[] = [
     title: "Continuous Monitoring",
     description: "Good merchants today can become risky merchants tomorrow.",
     href: "/continuous-monitoring",
+    isNew: true,
     illustration: <ContinuousMonitoringIllustration />,
     tall: false,
   },
@@ -381,7 +383,7 @@ export default function NavMenu() {
                       {card.title}
                     </p>
                     <span className="bg-[#FFF7ED] border border-[#F5E592] text-[#CA7D15] font-medium text-[12px] leading-4.5 px-2 py-0.5 rounded-full">
-                      New
+                      Coming soon
                     </span>
                   </div>
                 ) : (

@@ -4,12 +4,15 @@ import ReportCard from "@/components/report-card";
 
 export default function Hero() {
   return (
-    <section className="flex flex-col items-center w-full" style={{ minHeight: "calc(100vh - 88px)" }}>
+    <section
+      className="flex flex-col items-center w-full"
+      style={{ minHeight: "calc(100vh - 88px)" }}
+    >
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-stretch max-w-310 w-full flex-1 min-h-px px-4 md:px-8">
         {/* Left: headline + body + CTAs */}
         <div className="flex-1 flex flex-col gap-8 lg:gap-10 items-start justify-center min-w-0 pt-28 pb-12 lg:py-24">
           <div className="flex flex-col gap-4 lg:gap-5 items-start w-full">
-            <h1 className="font-medium text-[40px] leading-[48px] md:text-[52px] md:leading-[60px] lg:text-[60px] lg:leading-18 tracking-[-1.5px] text-[#0f172a]">
+            <h1 className="font-medium text-[40px] leading-12 md:text-[52px] md:leading-15 lg:text-[60px] lg:leading-18 tracking-[-1.5px] text-[#0f172a]">
               Know who you&apos;re onboarding before they cost you.
             </h1>
             <p className="text-[18px] leading-7 lg:text-[21px] lg:leading-7-5 text-[#475569]">
