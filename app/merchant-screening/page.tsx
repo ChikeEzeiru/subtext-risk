@@ -3,6 +3,8 @@
 import Navbar from "@/components/Navbar";
 import MerchantHero from "@/components/merchant-hero";
 import MerchantProblem from "@/components/merchant-problem";
+import MerchantApiSection from "@/components/merchant-api-section";
+import MerchantDifference from "@/components/merchant-difference";
 import MerchantAnalysis from "@/components/merchant-analysis";
 import Footer from "@/components/footer";
 
@@ -14,6 +16,8 @@ export default function MerchantScreening() {
         <MerchantHero />
         <MerchantProblem />
         <MerchantAnalysis />
+        <MerchantDifference />
+        <MerchantApiSection />
         <Footer />
       </main>
     </div>

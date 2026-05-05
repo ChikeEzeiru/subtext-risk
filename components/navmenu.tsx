@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 
 // ─── Illustrations ────────────────────────────────────────────────────────────
@@ -28,7 +27,6 @@ function MerchantScreeningIllustration() {
             "1-5",
             "9-6",
           ].includes(`${col}-${row}`);
-          const isPass = !isFlagged;
           return isFlagged ? (
             // X mark for flagged
             <g key={`${col}-${row}`} className="transition-colors duration-300">
@@ -281,7 +279,7 @@ type MenuCard = {
   title: string;
   description: string;
   href: string;
-  isNew?: boolean;
+  comingSoon?: boolean; // renamed from isNew
   illustration: React.ReactNode;
   tall: boolean;
 };
@@ -298,7 +296,7 @@ const menuCards: MenuCard[] = [
     title: "Deep Investigation",
     description: "When a case needs more than a quick check.",
     href: "/deep-investigation",
-    isNew: true,
+    comingSoon: true, // ← was isNew
     illustration: <DeepInvestigationIllustration />,
     tall: false,
   },
@@ -306,7 +304,7 @@ const menuCards: MenuCard[] = [
     title: "Continuous Monitoring",
     description: "Good merchants today can become risky merchants tomorrow.",
     href: "/continuous-monitoring",
-    isNew: true,
+    comingSoon: true,
     illustration: <ContinuousMonitoringIllustration />,
     tall: false,
   },
@@ -314,11 +312,77 @@ const menuCards: MenuCard[] = [
     title: "Compliance Reports",
     description: "Turn risk findings into audit-ready documentation.",
     href: "/compliance-reports",
-    isNew: true,
+    comingSoon: true,
     illustration: <ComplianceReportsIllustration />,
     tall: true,
   },
 ];
+
+// ─── Nav Card Component ─────────────────────────────────────────────────────────────────
+
+function NavCard({ card }: { card: MenuCard }) {
+  const inner = (
+    <>
+      {/* Illustration — top portion */}
+      <div className="absolute inset-0 bottom-18 overflow-clip">
+        {card.illustration}
+        <div
+          className={`absolute bottom-0 left-0 right-0 h-16 bg-linear-to-b from-transparent ${
+            card.comingSoon ? "to-white" : "to-white group-hover:to-[#FCFCFC]"
+          } transition-colors`}
+        />
+      </div>
+
+      {/* Copy — bottom anchored */}
+      <div className="relative flex flex-col gap-1 w-full z-10">
+        {card.comingSoon ? (
+          <div className="flex gap-1.5 items-center">
+            <p className="font-neue-montreal font-medium text-[14px] leading-5 text-[#17171C] whitespace-nowrap">
+              {card.title}
+            </p>
+            <span className="bg-[#FFF7ED] border border-[#F5E592] text-[#CA7D15] font-medium text-[12px] leading-4.5 px-2 py-0.5 rounded-full whitespace-nowrap">
+              Coming soon
+            </span>
+          </div>
+        ) : (
+          <p className="font-neue-montreal font-medium text-[14px] leading-5 text-[#17171C] whitespace-nowrap">
+            {card.title}
+          </p>
+        )}
+        <p className="font-neue-montreal text-[14px] leading-5 text-[#4F4F5E]">
+          {card.description}
+        </p>
+      </div>
+    </>
+  );
+
+  const sharedClass = `flex flex-col items-start justify-end w-full overflow-clip p-4 relative transition-colors border-b border-black/5 last:border-b-0 ${
+    card.tall ? "min-h-70" : "min-h-50"
+  }`;
+
+  // Coming soon — div, not a link. Cursor default, no hover state.
+  if (card.comingSoon) {
+    return (
+      <Link
+        href={card.href}
+        onClick={(e) => e.preventDefault()}
+        className={`group ${sharedClass} hover:bg-[#FCFCFC] cursor-default`}
+      >
+        {inner}
+      </Link>
+    );
+  }
+
+  // Active — real link with hover
+  return (
+    <Link
+      href={card.href}
+      className={`group ${sharedClass} hover:bg-[#FCFCFC]`}
+    >
+      {inner}
+    </Link>
+  );
+}
 
 export default function NavMenu() {
   return (
@@ -328,30 +392,7 @@ export default function NavMenu() {
         {/* Left column */}
         <div className="flex flex-1 flex-col items-start min-w-0">
           {[menuCards[0], menuCards[1]].map((card) => (
-            <Link
-              key={card.title}
-              href={card.href}
-              className={`group flex flex-col items-start justify-end w-full overflow-clip p-4 relative hover:bg-[#FCFCFC] transition-colors ${
-                card.tall ? "min-h-70" : "min-h-50"
-              } border-b border-black/5 last:border-b-0`}
-            >
-              {/* Illustration — top portion */}
-              <div className="absolute inset-0 bottom-18 overflow-clip">
-                {card.illustration}
-                {/* Fade gradient */}
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-b from-transparent to-white group-hover:to-[#FCFCFC] transition-colors" />
-              </div>
-
-              {/* Copy — bottom anchored */}
-              <div className="relative flex flex-col gap-1 w-full z-10">
-                <p className="font-neue-montreal font-medium text-[14px] leading-5 text-[#17171C] whitespace-nowrap">
-                  {card.title}
-                </p>
-                <p className="font-neue-montreal text-[14px] leading-5 text-[#4F4F5E]">
-                  {card.description}
-                </p>
-              </div>
-            </Link>
+            <NavCard key={card.title} card={card} />
           ))}
         </div>
 
@@ -361,41 +402,7 @@ export default function NavMenu() {
         {/* Right column */}
         <div className="flex flex-1 flex-col items-start min-w-0">
           {[menuCards[2], menuCards[3]].map((card) => (
-            <Link
-              key={card.title}
-              href={card.href}
-              className={`group flex flex-col items-start justify-end w-full overflow-clip p-4 relative hover:bg-[#FCFCFC] transition-colors ${
-                card.tall ? "min-h-70" : "min-h-50"
-              } border-b border-black/5 last:border-b-0`}
-            >
-              {/* Illustration — top portion */}
-              <div className="absolute inset-0 bottom-18 overflow-clip">
-                {card.illustration}
-                {/* Fade gradient */}
-                <div className="absolute bottom-0 left-0 right-0 h-16 bg-linear-to-b from-transparent to-white group-hover:to-[#FCFCFC] transition-colors" />
-              </div>
-
-              {/* Copy — bottom anchored */}
-              <div className="relative flex flex-col gap-1 w-full z-10">
-                {card.isNew ? (
-                  <div className="flex gap-1.5 items-center">
-                    <p className="font-neue-montreal font-medium text-[14px] leading-5 text-[#17171C] whitespace-nowrap">
-                      {card.title}
-                    </p>
-                    <span className="bg-[#FFF7ED] border border-[#F5E592] text-[#CA7D15] font-medium text-[12px] leading-4.5 px-2 py-0.5 rounded-full">
-                      Coming soon
-                    </span>
-                  </div>
-                ) : (
-                  <p className="font-neue-montreal font-medium text-[14px] leading-5 text-[#17171C] whitespace-nowrap">
-                    {card.title}
-                  </p>
-                )}
-                <p className="font-neue-montreal text-[14px] leading-5 text-[#4F4F5E]">
-                  {card.description}
-                </p>
-              </div>
-            </Link>
+            <NavCard key={card.title} card={card} />
           ))}
         </div>
       </div>

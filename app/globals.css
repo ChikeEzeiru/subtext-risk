@@ -116,6 +116,10 @@
   --text-body-3xs--line-height: 1rem;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #fafafa;
   color: #4f4f5e;
