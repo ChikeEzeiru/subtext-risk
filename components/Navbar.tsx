@@ -18,7 +18,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) setMobileOpen(false);
@@ -29,13 +28,21 @@ export default function Navbar() {
 
   return (
     <div className="fixed top-2 left-0 right-0 z-50 flex flex-col items-center px-4 md:px-8 gap-2">
+      {/* ── Backdrop — captures outside clicks to close menu ── */}
+      {productsOpen && (
+        <div
+          className="fixed inset-0 z-49"
+          onClick={() => setProductsOpen(false)}
+        />
+      )}
+
       <motion.nav
         animate={{
           backgroundColor:
             scrolled || mobileOpen ? "#FFFFFF" : "rgba(255,255,255,0)",
           borderWidth: scrolled || mobileOpen ? "1px" : "0px",
           borderColor: "rgba(0,0,0,0.08)",
-          borderRadius: scrolled || mobileOpen ? "16px" : "16px",
+          borderRadius: "16px",
           boxShadow:
             scrolled || mobileOpen
               ? "0 2px 12px rgba(0,0,0,0.06)"
@@ -43,7 +50,7 @@ export default function Navbar() {
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         style={{ borderStyle: "solid" }}
-        className="flex items-center justify-between w-full lg:w-auto lg:justify-start lg:gap-16 pl-5 pr-2 py-1.5 min-h-14"
+        className="relative flex items-center justify-between w-full lg:w-auto lg:justify-start lg:gap-16 pl-5 pr-2 py-1.5 min-h-14 z-50"
       >
         {/* Left group: Logo + Nav Links */}
         <div className="flex items-center gap-5">
@@ -58,25 +65,18 @@ export default function Navbar() {
 
           {/* Desktop nav links */}
           <div className="hidden lg:flex items-center gap-0.5">
-            <div className="relative">
-              <button
-                onClick={() => setProductsOpen(!productsOpen)}
-                className="flex items-center gap-2 text-body-sm text-body hover:text-title transition-colors pl-3 pr-2 py-2 rounded-sm"
-              >
-                Products
-                <ChevronDown
-                  size={14}
-                  className={`transition-transform duration-200 ${
-                    productsOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {productsOpen && (
-                <div className="absolute top-full left-0 mt-4 w-170 bg-white rounded-md shadow-lg border border-border p-0">
-                  <NavMenu />
-                </div>
-              )}
-            </div>
+            <button
+              onClick={() => setProductsOpen(!productsOpen)}
+              className="flex items-center gap-2 text-body-sm text-body hover:text-title transition-colors pl-3 pr-2 py-2 rounded-sm"
+            >
+              Products
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-200 ${
+                  productsOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
             <Link
               href="#"
               className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm"
@@ -98,7 +98,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Right group: CTAs (desktop) + hamburger (mobile) */}
+        {/* Right group: CTAs + hamburger */}
         <div className="flex items-center gap-1">
           <Link
             href="#"
@@ -121,6 +121,13 @@ export default function Navbar() {
             {mobileOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
+
+        {/* ── Products dropdown — spans full navbar width ── */}
+        {productsOpen && (
+          <div className="absolute top-full left-0 right-0 mt-2">
+            <NavMenu />
+          </div>
+        )}
       </motion.nav>
 
       {/* Mobile menu */}
@@ -142,7 +149,7 @@ export default function Navbar() {
             {productsOpen && (
               <div className="ml-3 flex flex-col gap-1 border-l border-[rgba(0,0,0,0.08)] pl-3">
                 <Link
-                  href="#"
+                  href="/merchant-screening"
                   className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-lg hover:bg-bg-alt"
                 >
                   Merchant Screening
@@ -151,7 +158,19 @@ export default function Navbar() {
                   href="#"
                   className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-lg hover:bg-bg-alt"
                 >
-                  Portfolio Monitoring
+                  Deep Investigation
+                </Link>
+                <Link
+                  href="#"
+                  className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-lg hover:bg-bg-alt"
+                >
+                  Continuous Monitoring
+                </Link>
+                <Link
+                  href="#"
+                  className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-lg hover:bg-bg-alt"
+                >
+                  Compliance Reports
                 </Link>
               </div>
             )}
