@@ -128,6 +128,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.my-gradient {
+  background: radial-gradient(
+    35.75% 67.75% at 50% 100%,
+    #faf2cb 0%,
+    #fefbec 50%,
+    #fafafa 100%
+  );
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  overscroll-behavior: none;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);

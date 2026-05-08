@@ -78,7 +78,7 @@ export default function Navbar() {
               />
             </button>
             <Link
-              href="#"
+              href="/customers"
               className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm"
             >
               Customers
