@@ -2,16 +2,12 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/footer";
-import DocsHero from "@/components/docs-hero";
-import DocsHowTo from "@/components/docs-how-to";
 
-export default function Customers() {
+export default function Blog() {
   return (
     <section className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex flex-col flex-1">
-        <DocsHero />
-        <DocsHowTo />
         <Footer />
       </main>
     </section>

@@ -84,7 +84,7 @@ export default function Navbar() {
               Customers
             </Link>
             <Link
-              href="#"
+              href="/docs"
               className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm"
             >
               API Docs
