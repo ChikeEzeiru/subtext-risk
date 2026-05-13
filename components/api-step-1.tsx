@@ -2,57 +2,40 @@
 
 import { useState } from "react";
 
-// ─── Copy button ──────────────────────────────────────────────────────────────
-
 function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
 
-  const copy = () => {
-    navigator.clipboard.writeText(value);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
     <button
-      onClick={copy}
-      className="flex items-center gap-1.5 px-2.5 py-1 rounded-md transition-colors shrink-0"
+      onClick={() => {
+        navigator.clipboard.writeText(value);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      }}
+      className="flex items-center gap-1.5 shrink-0 transition-colors"
       style={{
-        border: `0.75px solid ${copied ? "#86EFAC" : "#4F4F5E"}`,
-        background: copied ? "#0A1F12" : "transparent",
+        border: "0.75px solid #4F4F5E",
+        borderRadius: 6,
+        padding: "4px 10px",
+        background: "transparent",
       }}
     >
-      {copied ? (
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#86EFAC"
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-      ) : (
-        <svg
-          width="10"
-          height="10"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#D3D3D9"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="9" y="9" width="13" height="13" rx="2" />
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-        </svg>
-      )}
+      <svg
+        width="10"
+        height="10"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#D3D3D9"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <rect x="9" y="9" width="13" height="13" rx="2" />
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+      </svg>
       <span
-        className="font-mono text-[10px]"
-        style={{ color: copied ? "#86EFAC" : "#D3D3D9" }}
+        className="font-neue-montreal text-[11px]"
+        style={{ color: "#D3D3D9" }}
       >
         {copied ? "Copied" : "Copy"}
       </span>
@@ -60,133 +43,106 @@ function CopyButton({ value }: { value: string }) {
   );
 }
 
-// ─── Key row ──────────────────────────────────────────────────────────────────
-
-function KeyRow({
-  label,
-  env,
-  value,
-  showBorder,
-}: {
-  label: string;
-  env: string;
-  value: string;
-  showBorder: boolean;
-}) {
-  return (
-    <div
-      className="flex items-center justify-between px-4 py-4"
-      style={{
-        borderBottom: showBorder ? "1px solid #1E293B" : "none",
-      }}
-    >
-      {/* Left — label + masked key */}
-      <div className="flex flex-col gap-1.5 min-w-0">
-        <div className="flex items-center gap-2">
-          <span
-            className="font-mono text-[10px] px-1.5 py-0.5 rounded"
-            style={{
-              background: env === "live" ? "#0A1F12" : "#0F1A2B",
-              color: env === "live" ? "#86EFAC" : "#93C5FD",
-              border: `0.5px solid ${
-                env === "live" ? "#16A34A22" : "#3B82F622"
-              }`,
-            }}
-          >
-            {env === "live" ? "live" : "sandbox"}
-          </span>
-          <span className="font-mono text-[10px]" style={{ color: "#6E6E7D" }}>
-            {label}
-          </span>
-        </div>
-        <span
-          className="font-mono text-[11px] tracking-wide"
-          style={{ color: "#D3D3D9" }}
-        >
-          {value}
-        </span>
-      </div>
-
-      {/* Right — copy button */}
-      <CopyButton value={value} />
-    </div>
-  );
-}
-
-// ─── Step 1 illustration ──────────────────────────────────────────────────────
-
 export default function ApiStep1() {
   return (
     <div
-      className="w-full flex items-center justify-center overflow-clip"
+      className="flex items-start justify-center overflow-y-clip"
       style={{ width: 358, height: 224 }}
     >
       {/* Card */}
       <div
-        className="w-full overflow-hidden shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]"
         style={{
           background: "#0B1221",
-          borderRadius: 6,
-          marginLeft: 27,
-          marginRight: 27,
+          borderRadius: 8,
+          width: 304,
           marginTop: 16,
+          overflow: "hidden",
         }}
       >
         {/* Header */}
         <div
-          className="px-4 py-4"
+          className="px-3 py-3"
           style={{ borderBottom: "1px solid #1E293B" }}
         >
-          {/* Breadcrumb */}
-          <div className="flex items-center gap-1.5 mb-1">
-            <span
-              className="font-mono text-[10px]"
-              style={{ color: "#6E6E7D" }}
-            >
-              Settings
-            </span>
-            <span
-              className="font-mono text-[10px]"
-              style={{ color: "#4F4F5E" }}
-            >
-              /
-            </span>
-            <span
-              className="font-mono text-[10px]"
-              style={{ color: "#6E6E7D" }}
-            >
-              API Keys
-            </span>
-          </div>
-          {/* Title */}
           <p
-            className="font-mono text-[13px] font-medium"
+            className="font-neue-montreal font-medium text-[12.5px] leading-5 mb-1"
             style={{ color: "#E3E3E8" }}
           >
-            API Keys
+            Standard Keys
           </p>
-          {/* Subtitle */}
           <p
-            className="font-mono text-[10px] mt-0.5"
+            className="font-neue-montreal text-[10px] leading-3.25"
             style={{ color: "#9E9EAD" }}
           >
-            Authenticate requests to the Subtext API
+            Create a key with full API access, enabling extensive interaction
+            with your account.
           </p>
         </div>
 
-        {/* Key rows */}
-        <KeyRow
-          label="Secret key"
-          env="live"
-          value="sk_live_••••••••••••••••••"
-          showBorder={false}
-        />
-        <KeyRow
-          label="Secret key"
-          env="sandbox"
-          value="sk_test_••••••••••••••••••"
-          showBorder={false}
-        />
+        {/* Keys */}
+        <div className="px-5 py-5 flex flex-col gap-5">
+          {/* Publishable key */}
+          <div className="flex flex-col gap-1">
+            <div className="flex flex-row gap-1.5 items-center">
+              <p
+                className="font-neue-montreal text-[10px]"
+                style={{ color: "#6E6E7D" }}
+              >
+                Publishable Key
+              </p>
+
+              <span
+                className="flex items-center justify-center px-2 py-0.5"
+                style={{ background: "#422006", borderRadius: 4 }}
+              >
+                <p className="font-neue-montreal text-[8px] text-yellow-300">
+                  test
+                </p>
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between gap-5">
+              <p
+                className="font-mono text-[10px] leading-4 break-all"
+                style={{ color: "#D3D3D9" }}
+              >
+                pk_test_j8JIEcwAyd8uWD7NA4SDWISr5AfDKdW12e3D2dqoWA
+              </p>
+              <CopyButton value="pk_live_j8JIEcwAyd8uWD7NA4SDWISr5AfDKdW12e3D2dqoWA" />
+            </div>
+          </div>
+
+          {/* Secret key */}
+          <div className="flex flex-col gap-1">
+            <div className="flex flex-row gap-1.5 items-center">
+              <p
+                className="font-neue-montreal text-[10px]"
+                style={{ color: "#6E6E7D" }}
+              >
+                Secret Key
+              </p>
+
+              <span
+                className="flex items-center justify-center px-2 py-0.5"
+                style={{ background: "#052E16", borderRadius: 4 }}
+              >
+                <p className="font-neue-montreal text-[8px] text-green-300">
+                  live
+                </p>
+              </span>
+            </div>
+
+            <div className="flex items-center justify-between gap-5">
+              <p
+                className="font-mono text-[10px] leading-4"
+                style={{ color: "#D3D3D9" }}
+              >
+                sk_live_••••••••••Rd
+              </p>
+              <CopyButton value="sk_live_••••••••••Rd" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

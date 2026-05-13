@@ -16,10 +16,9 @@ export default function DocsHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0 }}
+              className="text-[32px] leading-10 md:text-[48px] md:leading-15 font-medium tracking-[-0.96px] text-[#17171c] text-center text-balance"
             >
-              <h1 className="text-[32px] leading-10 md:text-[48px] md:leading-15 font-medium tracking-[-0.96px] text-[#17171c] text-center text-balance">
-                One endpoint. One response. That&apos;s the whole API.
-              </h1>
+              One endpoint. One response. That&apos;s the whole API.
             </motion.h1>
           </div>
 
@@ -27,12 +26,11 @@ export default function DocsHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: 0.08 }}
+            className="text-body-xl max-w-180 text-center text-balance"
           >
-            <p className="text-body-xl max-w-180 text-center text-balance">
-              Subtext&apos;s API is designed to do one thing well: take a
-              merchant URL and return a structured risk report. No complex
-              setup, no multi-step flows, no configuration required to start.
-            </p>
+            Subtext&apos;s API is designed to do one thing well: take a merchant
+            URL and return a structured risk report. No complex setup, no
+            multi-step flows, no configuration required to start.
           </motion.p>
         </div>
 
