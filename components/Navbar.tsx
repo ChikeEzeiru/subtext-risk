@@ -90,7 +90,7 @@ export default function Navbar() {
               API Docs
             </Link>
             <Link
-              href="#"
+              href="/blog"
               className="text-body-sm text-body hover:text-title transition-colors px-3 py-2 rounded-sm"
             >
               Resources
