@@ -95,7 +95,7 @@ function FloatingCard({
   return (
     <div
       ref={refCallback}
-      className={`hidden md:flex flex-row p-3 rounded-sm bg-white gap-3 max-w-70 border border-border shadow-[0px_2px_8px_rgba(0,0,0,0.06)] ${
+      className={`hidden md:absolute md:flex flex-row p-3 rounded-sm bg-white gap-3 max-w-70 border border-border shadow-[0px_2px_8px_rgba(0,0,0,0.06)] ${
         positionClasses[card.position]
       }`}
     >
