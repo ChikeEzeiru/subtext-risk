@@ -2481,14 +2481,14 @@ export default function WhatSubtextAnalyses() {
   return (
     <section className="flex flex-col gap-16 items-center py-24 w-full">
       {/* Heading */}
-      <div className="flex items-center justify-center max-w-310 px-8 w-full">
-        <h2 className="font-neue-montreal font-medium text-[48px] leading-15 tracking-[-0.96px] text-[#17171C] text-center max-w-180">
+      <div className="flex items-center justify-center max-w-310 px-4 md:px-8 w-full">
+        <h2 className="font-neue-montreal font-medium text-[32px] leading-10 md:text-[48px] md:leading-15 tracking-[-0.96px] text-[#17171C] text-center max-w-180">
           We read what your analysts would find, and what they&apos;d miss.
         </h2>
       </div>
 
       {/* Bento grid */}
-      <div className="flex flex-col gap-4 max-w-310 px-8 w-full">
+      <div className="flex flex-col gap-4 max-w-310 px-4 md:px-8 w-full">
         {/* Row 1 */}
         <div className="flex flex-col lg:flex-row gap-4 w-full">
           {/* Card 1 — Website Verification */}

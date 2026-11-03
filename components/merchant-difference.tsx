@@ -6,7 +6,7 @@ export default function MerchantDifference() {
   return (
     <section className="flex flex-col gap-16 items-center py-24 w-full bg-bg-alt">
       {/* Inner group */}
-      <div className="flex flex-col md:flex-col gap-24 items-center max-w-310 px-8 w-full">
+      <div className="flex flex-col md:flex-col gap-24 items-center max-w-310 px-4 md:px-8 w-full">
         {/* Title group */}
         <div className="flex flex-col gap-5 items-center w-full md:w-184">
           <div className="flex items-center px-2 py-1 border border-border rounded-lg bg-bg-primary">
@@ -14,7 +14,7 @@ export default function MerchantDifference() {
           </div>
           {/* Title */}
           <div className="flex flex-col gap-5 shrink-0 items-center justify-center">
-            <h2 className="font-neue-montreal font-medium text-[48px] leading-15 tracking-[-0.96px] text-[#17171C] w-full md:w-184 text-center">
+            <h2 className="font-neue-montreal font-medium text-[32px] leading-10 md:text-[48px] md:leading-15 tracking-[-0.96px] text-[#17171C] w-full md:w-184 text-center">
               Traditional KYB checks a database. Subtext reads the internet.
             </h2>
           </div>

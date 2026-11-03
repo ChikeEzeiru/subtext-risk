@@ -48,14 +48,14 @@ export default function BlogHero() {
       {/* Background */}
       <BackgroundBeamsDemo />
 
-      <div className="relative z-10 flex flex-col gap-16 max-w-310 px-8 w-full">
+      <div className="relative z-10 flex flex-col gap-16 max-w-310 px-4 md:px-8 w-full">
         {/* Hero Title and caption */}
         <div className="flex flex-col gap-2 items-start">
           <div className="flex items-center px-2 py-1 border border-border rounded-lg bg-bg-primary">
             <p className="text-body-xs font-medium">Subtext Blog</p>
           </div>
 
-          <h1 className="font-neue-montreal font-medium text-[48px] leading-15 tracking-[-0.96px] text-[#17171C] max-w-200 text-balance">
+          <h1 className="font-neue-montreal font-medium text-[32px] leading-10 md:text-[48px] md:leading-15 tracking-[-0.96px] text-[#17171C] max-w-200 text-balance">
             {" "}
             Insights on merchant risk, compliance, and building trust in
             payments.
@@ -63,7 +63,7 @@ export default function BlogHero() {
         </div>
 
         {/* Most recent or pinned blog card */}
-        <div className="flex flex-row gap-12 w-full md:h-101 bg-white border border-border rounded-xl p-7">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 w-full md:h-101 bg-white border border-border rounded-xl p-7">
           {/* Left section */}
           <div className="flex flex-col gap-3 w-full">
             <div className="flex flex-col gap-5 items-start">

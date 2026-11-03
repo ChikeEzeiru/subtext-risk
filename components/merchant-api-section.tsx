@@ -12,9 +12,9 @@ export default function ApiSection() {
   return (
     <section className="bg-[rgba(137,71,23,0.16)] flex flex-col gap-16 items-center py-24 w-full">
       {/* Title group */}
-      <div className="flex flex-col md:flex-row gap-16 items-start max-w-310 px-8 w-full">
+      <div className="flex flex-col md:flex-row gap-16 items-start max-w-310 px-4 md:px-8 w-full">
         <div className="flex flex-col gap-5 items-start shrink-0">
-          <h2 className="font-neue-montreal font-medium text-[48px] leading-15 tracking-[-0.96px] text-[#17171C] w-full md:w-120">
+          <h2 className="font-neue-montreal font-medium text-[32px] leading-10 md:text-[48px] md:leading-15 tracking-[-0.96px] text-[#17171C] w-full md:w-120">
             Live in your onboarding flow by end of week.
           </h2>
           {/* CTA Button */}
@@ -56,7 +56,7 @@ export default function ApiSection() {
       </div>
 
       {/* Integration method cards */}
-      <div className="flex flex-col items-start max-w-310 px-8 w-full">
+      <div className="flex flex-col items-start max-w-310 px-4 md:px-8 w-full">
         <div className="flex flex-col md:flex-row gap-4 items-start w-full">
           {[
             {

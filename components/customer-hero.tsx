@@ -6,9 +6,9 @@ export default function CustomerHero() {
   return (
     <section className="flex flex-col gap-20 items-center pt-42 pb-24 w-full min-h-184">
       {/* Title group */}
-      <div className="flex flex-col gap-16 items-center max-w-310 px-8 w-full">
+      <div className="flex flex-col gap-16 items-center max-w-310 px-4 md:px-8 w-full">
         <div className="flex flex-col gap-5 items-center max-w-190 min-h-76 w-full">
-          <h1 className="font-neue-montreal font-medium text-[48px] leading-15 tracking-[-0.96px] text-[#17171C] w-full text-center">
+          <h1 className="font-neue-montreal font-medium text-[32px] leading-10 md:text-[48px] md:leading-15 tracking-[-0.96px] text-[#17171C] w-full text-center">
             The companies rethinking how merchant risk gets assessed.
           </h1>
 
@@ -21,8 +21,8 @@ export default function CustomerHero() {
       </div>
 
       {/* Logo Bar */}
-      <div className="flex flex-row md:flex items-center justify-center w-full rounded-xl max-w-310 px-8">
-        <div className="flex-row md:flex items-center justify-center w-full border border-black/10 rounded-xl min-h-22">
+      <div className="flex items-center justify-center w-full rounded-xl max-w-310 px-4 md:px-8">
+        <div className="grid grid-cols-3 md:flex items-center justify-center w-full border border-black/10 rounded-xl min-h-22">
           <div className="flex w-full items-center justify-center">
             <Image
               src="/images/logos/visa.svg"

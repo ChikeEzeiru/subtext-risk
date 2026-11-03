@@ -10,7 +10,7 @@ export default function DocsResponse() {
   return (
     <section className="flex flex-col gap-16 items-center justify-center py-24 w-full bg-bg-primary">
       {/* isdfisdfidsksdis */}
-      <div className="flex flex-col gap-5 items-start px-8 w-full max-w-310">
+      <div className="flex flex-col gap-5 items-start px-4 md:px-8 w-full max-w-310">
         <h2 className="text-[32px] leading-10 md:text-[48px] md:leading-15 font-medium tracking-[-0.96px] text-[#17171c] text-balance">
           Everything your team needs to make a decision.{" "}
           <span className="text-accent">Nothing they don&apos;t.</span>
@@ -25,7 +25,7 @@ export default function DocsResponse() {
       </div>
 
       {/* isdfisdfidsksdis */}
-      <div className="flex flex-col gap-5 items-start px-8 w-full max-w-310">
+      <div className="flex flex-col gap-5 items-start px-4 md:px-8 w-full max-w-310">
         <DataTable columns={responseColumns} data={responseData} />
       </div>
     </section>
