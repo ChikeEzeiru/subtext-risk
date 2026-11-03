@@ -95,7 +95,7 @@ function FloatingCard({
   return (
     <div
       ref={refCallback}
-      className={`hidden md:flex flex-row p-3 rounded-sm bg-white gap-3 max-w-70 border border-border shadow-[0px_2px_8px_rgba(0,0,0,0.06)] ${
+      className={`absolute flex flex-row p-3 rounded-sm bg-white gap-3 max-w-70 border border-border shadow-[0px_2px_8px_rgba(0,0,0,0.06)] ${
         positionClasses[card.position]
       }`}
     >
@@ -204,9 +204,9 @@ export default function MerchantResult() {
   return (
     <section className="flex flex-col gap-24 items-center py-24 w-full bg-bg-primary">
       {/* Title group */}
-      <div className="flex flex-col md:flex-col gap-24 items-center max-w-310 px-4 md:px-8 w-full">
+      <div className="flex flex-col md:flex-col gap-24 items-center max-w-310 px-8 w-full">
         <div className="flex flex-col gap-5 shrink-0 items-center justify-center">
-          <h2 className="font-neue-montreal font-medium text-[32px] leading-10 md:text-[48px] md:leading-15 tracking-[-0.96px] text-[#17171C] w-full md:w-184 text-center">
+          <h2 className="font-neue-montreal font-medium text-[48px] leading-15 tracking-[-0.96px] text-[#17171C] w-full md:w-184 text-center">
             One API call. One structured report.{" "}
             <span className="text-accent">One risk decision.</span>
           </h2>
@@ -216,11 +216,11 @@ export default function MerchantResult() {
       {/* Layout container */}
       <div
         ref={containerRef}
-        className="relative flex md:flex-col gap-24 items-center justify-center max-w-310 px-4 md:px-8 w-full md:min-h-130"
+        className="relative flex md:flex-col gap-24 items-center justify-center max-w-310 px-8 w-full min-h-130"
       >
-        {/* ── SVG connector lines — desktop only ── */}
+        {/* ── SVG connector lines — behind everything ── */}
         <svg
-          className="hidden md:block absolute inset-0 w-full h-full pointer-events-none"
+          className="absolute inset-0 w-full h-full pointer-events-none"
           style={{ overflow: "visible" }}
         >
           <defs>
@@ -299,21 +299,6 @@ export default function MerchantResult() {
           />
         ))}
 
-        {/* ── Mobile card list (hidden on desktop) ── */}
-        <div className="grid grid-cols-1 gap-3 w-full md:hidden">
-          {cards.map((card) => (
-            <div key={card.id} className="flex flex-row p-3 rounded-sm bg-white gap-3 border border-border shadow-[0px_2px_8px_rgba(0,0,0,0.06)]">
-              <div className="flex items-center justify-center w-7 h-7 border rounded-sm border-border p-1 shrink-0">
-                <Image src={card.iconSrc} alt="" height={20} width={20} color="#94A3B8" />
-              </div>
-              <p className="text-md text-body font-neue-montreal">
-                <span className="font-medium font-neue-montreal text-bg-dark">{card.title}.</span>{" "}
-                {card.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
         {/* ── Report card — center ── */}
         <div ref={reportCardRef} className="relative z-10">
           <FullReportCard />
@@ -321,7 +306,7 @@ export default function MerchantResult() {
       </div>
 
       {/* Body copy */}
-      <div className="flex flex-col md:flex-col gap-24 items-center max-w-310 px-4 md:px-8 w-full">
+      <div className="flex flex-col md:flex-col gap-24 items-center max-w-310 px-8 w-full">
         <p className="text-xl text-center leading-7-5 text-[#4F4F5E] max-w-200">
           Every report is structured as JSON, delivered via API or viewable in
           the Subtext portal. Fields are consistent across every merchant, so
