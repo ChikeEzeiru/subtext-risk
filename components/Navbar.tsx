@@ -127,8 +127,8 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* ── Products dropdown — spans full navbar width ── */}
-        {productsOpen && (
+        {/* ── Products dropdown — desktop only ── */}
+        {productsOpen && !mobileOpen && (
           <div className="absolute top-full left-0 right-0 mt-2">
             <NavMenu />
           </div>
@@ -180,19 +180,19 @@ export default function Navbar() {
               </div>
             )}
             <Link
-              href="#"
+              href="/customers"
               className="text-body-sm text-body hover:text-title transition-colors px-3 py-2.5 rounded-lg hover:bg-bg-alt"
             >
               Customers
             </Link>
             <Link
-              href="#"
+              href="/docs"
               className="text-body-sm text-body hover:text-title transition-colors px-3 py-2.5 rounded-lg hover:bg-bg-alt"
             >
               API Docs
             </Link>
             <Link
-              href="#"
+              href="/blog"
               className="text-body-sm text-body hover:text-title transition-colors px-3 py-2.5 rounded-lg hover:bg-bg-alt"
             >
               Resources
