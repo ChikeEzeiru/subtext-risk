@@ -7,7 +7,7 @@ import ApiStep3 from "./api-step-3";
 export default function DocsHowTo() {
   return (
     <section className="flex flex-col gap-16 items-center py-24 w-full bg-bg-alt">
-      <div className="flex flex-col gap-5 items-center px-8 w-full max-w-310">
+      <div className="flex flex-col gap-5 items-center px-4 md:px-8 w-full max-w-310">
         <div className="max-w-180">
           <h2 className="text-[32px] leading-10 md:text-[48px] md:leading-15 font-medium tracking-[-0.96px] text-[#17171c] text-center text-balance">
             From API key to first report{" "}
@@ -16,7 +16,7 @@ export default function DocsHowTo() {
         </div>
       </div>
 
-      <div className="flex flex-row gap-4 items-center px-8 w-full max-w-310">
+      <div className="flex flex-col md:flex-row gap-4 items-start px-4 md:px-8 w-full max-w-310">
         <div className="w-full flex flex-col p-3 gap-4">
           <ApiStep1 />
 

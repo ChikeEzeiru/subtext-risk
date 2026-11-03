@@ -45,9 +45,9 @@ function ArrowIcon() {
 export default function CustomersCaseStudyGrid() {
   return (
     <section className="flex flex-col py-24 gap-16 w-full items-center mx-auto bg-bg-alt">
-      <div className="flex flex-col gap-8 items-center px-8 w-full max-w-310">
+      <div className="flex flex-col gap-8 items-center px-4 md:px-8 w-full max-w-310">
         {/* Top Case Study Content */}
-        <div className="flex flex-row items-start w-full gap-16">
+        <div className="flex flex-col md:flex-row items-start w-full gap-8 md:gap-16">
           <h3 className="text-[28px] leading-10 md:text-[42px] md:leading-12 font-medium tracking-[-0.96px] text-[#17171c] text-pretty">
             Visa automated 56% more of their merchant onboarding with Subtext.
           </h3>
@@ -96,7 +96,7 @@ export default function CustomersCaseStudyGrid() {
       <div className="h-px w-full max-w-294 bg-black/10 "></div>
 
       {/* Case study grid */}
-      <div className="flex flex-row items-start gap-4 max-w-310 w-full px-8 overflow-hidden">
+      <div className="flex flex-row items-start gap-4 max-w-310 w-full px-4 md:px-8 overflow-hidden">
         <CaseStudyCarousel />
       </div>
     </section>

@@ -6,7 +6,7 @@ export default function ApiSdkSection() {
   return (
     <section className="flex flex-col gap-16 items-center justify-center py-24 w-full bg-bg-primary">
       {/* Section header and description */}
-      <div className="flex flex-col gap-10 items-start px-8 w-full max-w-310">
+      <div className="flex flex-col gap-10 items-start px-4 md:px-8 w-full max-w-310">
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-2 items-start">
             <div className="flex items-center px-2 py-1 border border-border rounded-lg bg-bg-primary">
@@ -26,7 +26,7 @@ export default function ApiSdkSection() {
         </div>
 
         {/* SDK badge row */}
-        <div className="flex flex-row gap-2.5 w-full items-center">
+        <div className="flex flex-wrap gap-2.5 w-full items-center">
           <div className="flex items-center gap-3 px-2 py-1  rounded-lg">
             <Image
               src="/images/logos/python.svg"

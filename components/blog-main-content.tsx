@@ -111,7 +111,7 @@ export default function FilterableCardList() {
 
   return (
     <section className="flex flex-col items-center justify-center py-24 w-full bg-bg-primary">
-      <div className="space-y-6 max-w-310 px-8 w-full">
+      <div className="space-y-6 max-w-310 px-4 md:px-8 w-full">
         {/* ── Filter pills ─────────────────────────────────── */}
         <div className="flex flex-wrap gap-2 max">
           {FILTERS.map(({ label, value }) => {

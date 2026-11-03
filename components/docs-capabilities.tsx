@@ -33,13 +33,13 @@ export default function ApiCapabilities() {
   return (
     <section className="flex flex-col gap-16 items-center justify-center py-24 w-full bg-bg-alt">
       {/* Section Header and Description */}
-      <div className="flex flex-col gap-5 items-start px-8 w-full max-w-310">
+      <div className="flex flex-col gap-5 items-start px-4 md:px-8 w-full max-w-310">
         <h2 className="text-[32px] leading-10 md:text-[48px] md:leading-15 font-medium tracking-[-0.96px] text-[#17171c] text-center text-balance">
           Built for how compliance teams actually work.
         </h2>
       </div>
 
-      <div className="flex flex-col gap-5 items-start px-8 w-full max-w-310">
+      <div className="flex flex-col gap-5 items-start px-4 md:px-8 w-full max-w-310">
         <div className="grid grid-cols-1 md:grid-cols-7 gap-3">
           {/* Card 1 – spans 3 columns */}
           <div className="col-span-1 md:col-span-4 rounded-xl border border-border bg-bg-primary p-6 transition-colors md:min-h-51">

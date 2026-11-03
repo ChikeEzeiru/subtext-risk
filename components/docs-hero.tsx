@@ -9,7 +9,7 @@ export default function DocsHero() {
   return (
     <section className="flex flex-col gap-16 items-center pt-42 pb-24 w-full">
       {/* Hero headline and description */}
-      <div className="flex flex-col gap-10 items-center px-8 w-full max-w-310">
+      <div className="flex flex-col gap-10 items-center px-4 md:px-8 w-full max-w-310">
         <div className="flex flex-col gap-5 items-center">
           <div className="max-w-180">
             <motion.h1
@@ -59,7 +59,7 @@ export default function DocsHero() {
       </div>
 
       {/* Code block with example API response */}
-      <div className="flex flex-col gap-5 items-center px-8 w-full max-w-310">
+      <div className="flex flex-col gap-5 items-center px-4 md:px-8 w-full max-w-310">
         <motion.div
           className="w-full"
           initial={{ opacity: 0, y: 28, scale: 0.98 }}

@@ -198,7 +198,7 @@ export default function CaseStudyCarousel() {
   };
 
   return (
-    <div className="max-w-310 mx-auto px-8">
+    <div className="max-w-310 mx-auto px-4 md:px-8">
       {/* Navigation arrows */}
       <div className="flex items-center justify-end gap-2 mb-6">
         <button
